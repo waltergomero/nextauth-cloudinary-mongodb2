@@ -40,7 +40,10 @@ const NavBar = () => {
               Create Post
             </Link>
 
-            <button type='button' onClick={signOut} className='outline_btn'>
+            <button 
+              type='button'   
+              onClick={() => signOut({callbackUrl: `${window.location.origin}`})}
+              className='outline_btn'>
               Sign Out
             </button>
 
@@ -61,9 +64,11 @@ const NavBar = () => {
                 <button
                   type='button'
                   key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
+                  onClick={() =>
+                    signIn(provider.id, {
+                      callbackUrl: `${window.location.origin}/pages/admin`,
+                    })
+                  }
                   className='black_btn'
                 >
                   Sign in
