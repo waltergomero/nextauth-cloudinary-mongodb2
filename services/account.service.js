@@ -13,7 +13,6 @@ function login(email, password) {
     password: password,
     callbackUrl: `${window.location.origin}`,
   }).then((user) => {
-    console.log("account services: ", user)
     return user;
   });
 }

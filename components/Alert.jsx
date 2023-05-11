@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+'use client'
 
-import { alertService } from 'services';
+import { useState, useEffect} from 'react';
+import { useRouter } from 'next/navigation';
+
+import { alertService } from '../services/alert.service';
 
 export { Alert };
 

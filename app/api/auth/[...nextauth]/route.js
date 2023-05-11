@@ -49,6 +49,7 @@ import db from "@utils/db";
 
         if (!user) {
           throw new Error("User with this email doesn't exists.");
+
         }
         if (user && bcryptjs.compareSync(credentials.password, user.password)) {
           return {
@@ -66,14 +67,13 @@ import db from "@utils/db";
 });
 export { handler as GET, handler as POST }
 
-//export default NextAuth(authOptions);
 
 // import NextAuth from 'next-auth';
 // import GoogleProvider from 'next-auth/providers/google';
 // import GitHubProvider from "next-auth/providers/github";
 
 // import User from '@models/user';
-// import { connectToDB } from '@utils/database';
+// import db from "@utils/db";
 
 // const handler = NextAuth({
 //   providers: [
@@ -96,7 +96,7 @@ export { handler as GET, handler as POST }
 //     },
 //     async signIn({ account, profile, user, credentials }) {
 //       try {
-//         await connectToDB();
+//         await db();
 
 //         // check if user already exists
 //         const userExists = await User.findOne({ email: profile.email });
@@ -119,4 +119,4 @@ export { handler as GET, handler as POST }
 //   }
 // })
 
-// export { handler as GET, handler as POST }
+//export { handler as GET, handler as POST }

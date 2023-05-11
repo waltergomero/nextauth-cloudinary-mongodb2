@@ -168,3 +168,7 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.login-bg{
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)
+}

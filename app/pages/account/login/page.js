@@ -20,9 +20,9 @@ export default function LoginPage() {
     return accountService
       .login(email, password)
       .then((res) => {
-        if (res.ok) {
-          const returnUrl = router.query.returnUrl || "/pages/admin";
-          router.push(returnUrl);
+        console.log("res", res)
+        if (!res.error) {
+          router.push("/pages/admin");
         } else {
           alertService.error(res.error);
         }
@@ -39,10 +39,10 @@ export default function LoginPage() {
           </h1>    
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor='email' className="block text-dark text-sm" >Email Address</label>
+            <label htmlFor='email' className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Email:</label>
             <input
               type='email'
-              className="w-full px-4 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
               id='email'
               required
               value={email}
@@ -50,24 +50,23 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            <label htmlFor='password'  className="block text-dark text-sm" >Password</label>
+            <label htmlFor='password'  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Password:</label>
             <input
               type='password'
               id='password'
               required
               minLength="6"
               maxLength="32"
-              className="w-full px-4 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
-          <input type='submit' value='Login' className="px-6 py-1 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700"/>
+          <input type='submit' value='Login' className="px-6 py-1 mt-4 text-white uppercase bg-blue-600 border rounded hover:bg-blue-700"/>
         </form>
 
-        <p className="block text-dark text-sm">
-          Don't have an account? <Link href='/account/register' className="text-sm text-blue-600 hover:underline">Register</Link>
+        <p className="block text-dark text-sm pt-3">
+          Don't have an account? <Link href='/account/register' className="text-md text-blue-600 hover:underline">Register</Link>
         </p>
       </div>
       </div>
